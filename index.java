@@ -1,17 +1,42 @@
 public class index {
 
-    static int reverse(int a) {
-        int r = 0;
-        while (a != 0) {
-            int re = a % 10;
-            r = r * 10 + re;
-            a = a / 10;
+    
+    static void number(int m, int n) {
+        boolean state = false;
+        String sum = "";
+        for (int i = m; i <= n; i++) {
+            sum = "";
+            for (int j = 1; j <= 3; j++) {
+                sum += (i * j);
+            
+             state = check(sum);
+             if(state){
+                System.out.println(i+" ");
+             }
         }
-        return r;
     }
-
+    }
+    static boolean check(String sum) {
+        boolean state = false;
+        int a[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < sum.length(); i++) {
+            for (int j = 1; j <= 9; j++) {
+                if (Integer.parseInt(String.valueOf(sum.charAt(i))) == j) {
+                    a[j - 1] = (a[j - 1] + 1);
+                }
+            }
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 1) {
+                state = true;
+            } else {
+                state = false;
+            }
+        }
+        return state;
+    }
     public static void main(String[] args) {
-      
-       System.out.println( reverse(23));
+number(100,200);
+System.out.println(check("273"));
     }
 }
